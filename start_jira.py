@@ -31,6 +31,7 @@ j.createFileInto(j.jira, j.jiraTitle, j.description_text)
 
 # Update MyHours
 m.connectToMyHours()
+print ("Start Jira epic_link : " + j.epic_link)
 m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
 
 # 
