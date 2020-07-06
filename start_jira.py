@@ -4,7 +4,8 @@ from MyHours import myhours as m
 import os
 from os.path import dirname
 
-j.jira = 'TOS-2780'
+j.jira = 'TOS-2801'
+isStartMyHoursNeeded = False
 
 # -10 for the name of this project Start_Jira
 save_path = dirname(__file__)[ : -10]
@@ -16,9 +17,12 @@ j.save_path = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'save_path
 tools.openBrowserChrome()
 
 # Start MyHours
-m.connectToMyHours()
-m.enterCredentials()
-m.startTrack()
+if isStartMyHoursNeeded == True :
+    m.connectToMyHours()
+    m.enterCredentials()
+    m.startTrack()
+else :
+    print ("Not needed to start the time")
 
 # Jira part
 j.connectToJira(j.jira)
@@ -31,6 +35,8 @@ j.createFileInto(j.jira, j.jiraTitle, j.description_text)
 
 # Update MyHours
 m.connectToMyHours()
+if isStartMyHoursNeeded != True :
+    m.enterCredentials()
 print ("Start Jira epic_link : " + j.epic_link)
 m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
 
