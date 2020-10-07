@@ -4,8 +4,9 @@ from MyHours import myhours as m
 import os
 from os.path import dirname
 
-j.jira = 'TOS-2801'
-isStartMyHoursNeeded = False
+j.jira = 'TOS-2967'
+# False : If you have already start the clock => just update after. => Default value is True
+isStartMyHoursNeeded = True
 
 # -10 for the name of this project Start_Jira
 save_path = dirname(__file__)[ : -10]
