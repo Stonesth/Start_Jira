@@ -4,7 +4,6 @@ from MyHours import myhours as m
 import os
 from os.path import dirname
 
-j.jira = 'TOS-2967'
 # False : If you have already start the clock => just update after. => Default value is True
 isStartMyHoursNeeded = True
 
@@ -13,6 +12,7 @@ save_path = dirname(__file__)[ : -10]
 propertiesFolder_path = save_path + "Properties"
 
 j.save_path = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'save_path=')
+j.jira = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'jira=')
 
 # Open Browser
 tools.openBrowserChrome()
