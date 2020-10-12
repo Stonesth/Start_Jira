@@ -28,7 +28,7 @@ else :
 # Jira part
 j.connectToJira(j.jira)
 j.recoverJiraInformation()
-j.startJira()
+# j.startJira()
 
 # Create folder link to this JIRA
 j.createFolderJira(j.jira)
