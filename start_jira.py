@@ -8,8 +8,9 @@ from os.path import dirname
 isStartMyHoursNeeded = True
 
 # -10 for the name of this project Start_Jira
-save_path = dirname(__file__)[ : -10]
-propertiesFolder_path = save_path + "Properties"
+# save_path = dirname(__file__)[ : -10]
+save_path = os.path.dirname(os.path.abspath("__file__"))
+propertiesFolder_path = save_path + "/"+ "Properties"
 
 j.save_path = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'save_path=')
 j.jira = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'jira=')
