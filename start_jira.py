@@ -19,12 +19,12 @@ j.jira = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'jira=')
 tools.openBrowserChrome()
 
 # Start MyHours
-if isStartMyHoursNeeded == True :
-    m.connectToMyHours()
-    m.enterCredentials()
-    m.startTrack()
-else :
-    print ("Not needed to start the time")
+# if isStartMyHoursNeeded == True :
+#     m.connectToMyHours()
+#     m.enterCredentials()
+#     m.startTrack()
+# else :
+#     print ("Not needed to start the time")
 
 # Jira part
 j.connectToJira(j.jira)
@@ -36,11 +36,15 @@ j.createFolderJira(j.jira)
 j.createFileInto(j.jira, j.jiraTitle, j.description_text, j.jira, j.jira + "_Comment_v001")
 
 # Update MyHours
+# m.connectToMyHours()
+# if isStartMyHoursNeeded != True :
+#     m.enterCredentials()
+# print ("Start Jira epic_link : " + j.epic_link)
+# m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
 m.connectToMyHours()
-if isStartMyHoursNeeded != True :
-    m.enterCredentials()
-print ("Start Jira epic_link : " + j.epic_link)
-m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
+m.enterCredentials()
+m.startTrackWithDescription(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
+
 
 # 
 tools.openFolder(j.save_path + j.jira)
