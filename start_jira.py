@@ -15,6 +15,9 @@ propertiesFolder_path = save_path + "/"+ "Properties"
 j.save_path = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'save_path=')
 j.jira = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'jira=')
 
+userJira = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'userJira=')
+passJira = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'passJira=')
+
 # Open Browser
 tools.openBrowserChrome()
 
@@ -27,6 +30,7 @@ tools.openBrowserChrome()
 #     print ("Not needed to start the time")
 
 # Jira part
+# j.loginToJira(userJira, passJira)
 j.connectToJira(j.jira)
 j.recoverJiraInformation()
 # j.startJira()
