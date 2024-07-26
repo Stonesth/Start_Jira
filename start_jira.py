@@ -19,6 +19,7 @@ userJira = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'userJira=')
 passJira = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'passJira=')
 
 j.userInsim = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'userInsim=')
+j.userInsimPassword = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'userInsimPassword=')
 
 # Open Browser
 tools.openBrowserChrome()
@@ -33,7 +34,7 @@ tools.openBrowserChrome()
 
 # Jira part
 # j.loginToJira(userJira, passJira)
-j.connectToJiraInsim(j.jira, j.userInsim)
+j.connectToJiraInsim(j.jira, j.userInsim, j.userInsimPassword)
 j.recoverJiraInformation()
 # j.startJira()
 
