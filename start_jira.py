@@ -49,7 +49,7 @@ j.createFileInto(j.jira, j.jiraTitle, j.description_text, j.jira, j.jira + "_Com
 # print ("Start Jira epic_link : " + j.epic_link)
 # m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
 m.connectToMyHours()
-m.enterCredentials()
+# m.enterCredentials()
 m.startTrackWithDescription(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
 
 
