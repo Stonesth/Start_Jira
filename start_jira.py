@@ -81,7 +81,6 @@ j.createFileInto(j.jira, j.jiraTitle, j.description_text, j.jira, j.jira + "_Com
 m.connectToMyHours()
 # m.enterCredentials()
 m.startTrackWithDescription(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
-m.changetheTag()
 
 
 # 
