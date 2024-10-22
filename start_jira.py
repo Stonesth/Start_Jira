@@ -3,6 +3,10 @@ from Jira import jira as j
 from MyHours import myhours as m
 import os
 from os.path import dirname
+import time
+import tkinter as tk
+from tkinter import messagebox
+
 
 # False : If you have already start the clock => just update after. => Default value is True
 isStartMyHoursNeeded = True
@@ -35,6 +39,32 @@ tools.openBrowserChrome()
 # Jira part
 # j.loginToJira(userJira, passJira)
 j.connectToJiraInsim(j.jira, j.userInsim, j.userInsimPassword)
+# Need to wait if the browser ask for a user and password
+# test if in the page we have the xpath of the button "//*[@id="i0116"]"
+
+# afficher une popup expliquant qu'il faut se connecter une première fois
+# Et installer l'extension chrome pour retenir les users et password
+def show_popup():
+    root = tk.Tk()
+    root.withdraw()  # Hide the root window
+    messagebox.showinfo("Information", "Please connect for the first time and install the Chrome extension to remember the users and passwords.")
+    root.destroy()
+
+
+print ("Test if we need to wait the page of the user / password")
+if tools.waitLoadingPageByID2(5, 'i0116') :
+    show_popup()
+    print ("Need to wait the page of the password")
+    tools.waitLoadingPageByID2(10, 'i0118')
+    print ("Need to wait the way of validation")
+    tools.waitLoadingPageByID2(30, 'idDiv_SAOTCS_Title')
+    print ("Need to wait validation")
+    time.sleep(30)
+    print ("Need to wait the installation of the extension") 
+    time.sleep(30)
+else :
+    print ("No need to wait")
+
 j.recoverJiraInformation()
 # j.startJira()
 
@@ -51,6 +81,7 @@ j.createFileInto(j.jira, j.jiraTitle, j.description_text, j.jira, j.jira + "_Com
 m.connectToMyHours()
 # m.enterCredentials()
 m.startTrackWithDescription(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
+m.changetheTag()
 
 
 # 
