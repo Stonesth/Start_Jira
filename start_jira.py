@@ -28,13 +28,10 @@ j.userInsimPassword = tools.readProperty(propertiesFolder_path, 'Start_Jira', 'u
 # Open Browser
 tools.openBrowserChrome()
 
-# Start MyHours
-# if isStartMyHoursNeeded == True :
-#     m.connectToMyHours()
-#     m.enterCredentials()
-#     m.startTrack()
-# else :
-#     print ("Not needed to start the time")
+# MyHours part
+m.connectToMyHours()
+m.startTrack()
+
 
 # Jira part
 # j.loginToJira(userJira, passJira)
